@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ingredient.name %>
+</p>
+
+<p>
+  <strong>Lactose:</strong>
+  <%= @ingredient.lactose %>
+</p>
+
+<p>
+  <strong>Nut:</strong>
+  <%= @ingredient.nut %>
+</p>
+
+<p>
+  <strong>Shellfish:</strong>
+  <%= @ingredient.shellfish %>
+</p>
+
+<p>
+  <strong>Wheat:</strong>
+  <%= @ingredient.wheat %>
+</p>
+
+<p>
+  <strong>Vegetarian:</strong>
+  <%= @ingredient.vegetarian %>
+</p>
+
+<p>
+  <strong>Vegan:</strong>
+  <%= @ingredient.vegan %>
+</p>
+
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
+<%= link_to 'Back', ingredients_path %>
