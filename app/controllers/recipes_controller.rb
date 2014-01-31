@@ -24,10 +24,14 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
+    binding.pry
     @recipe = Recipe.new(recipe_params)
+    @ingredients = @recipe.ingredients.build(params[:recipe][:ingredient_attributes])
+    #@measurements = @recipe.measurements.build(params[:recipe][:measurements])
 
     respond_to do |format|
       if @recipe.save
+        reci
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
         format.json { render action: 'show', status: :created, location: @recipe }
       else
@@ -69,6 +73,11 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :type, :rating)
+      params.require(:recipe).permit(:name, :type, :servings, :directions,
+        :ingredients => [:id, :name,
+          :measurements => [:id, :ingredient_size, :ingredient_unit]
+ #       :measurements => [:id, :ingredient_size, :ingredient_unit,
+ #         :ingredients => [:id, :name]
+          ])
     end
 end

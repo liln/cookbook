@@ -13,15 +13,36 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :value => "Chocolate Chip Cookies" %>
   </div>
   <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.label :servings %><br>
+    <%= f.text_field :servings, :value => 4 %>
   </div>
+
+  <h2>Ingredients</h2>
+  <div class="items">
+    <%= f.nested_fields_for :ingredients do |i| %>
+
+      <fieldset class="item">
+        <%= i.fields_for :measurements do |m| %>
+          <%= m.text_field :ingredient_size %>
+          <%= m.select :ingredient_unit, %w[unit tbsp tsp cup pint quart oz] %>
+        <% end %>
+
+        <%= i.text_field :name %>
+        <a href="#" class="remove">Remove</a>
+
+        <%= i.hidden_field :id %>
+        <%= i.hidden_field :_destroy %>
+      </fieldset>
+    <% end %>
+  </div>
+  <a href="#" class="add">Add</a>
+
   <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.text_field :rating %>
+    <%= f.label :directions %><br>
+    <%= f.text_field :directions, :rows => 10 %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'awesome_nested_fields'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'foundation-rails'
 gem 'jbuilder', '~> 1.2'

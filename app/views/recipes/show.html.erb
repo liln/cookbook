@@ -6,13 +6,22 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @recipe.type %>
+  <strong>Servings:</strong>
+  <%= @recipe.servings %>
+</p>
+<% binding.pry %>
+<p>
+  <strong>Ingredients:</strong><br>
+    <% @recipe.ingredients.each do |r| %>
+      <%= r.measurement.ingredient_size %>
+      <%= r.measurement.ingredient_unit %>
+      <%= r.name %>
+    <% end %>
 </p>
 
 <p>
-  <strong>Rating:</strong>
-  <%= @recipe.rating %>
+  <strong>Directions:</strong>
+  <%= @recipe.directions %>
 </p>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
