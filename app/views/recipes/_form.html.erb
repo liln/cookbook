@@ -22,20 +22,21 @@
 
   <h2>Ingredients</h2>
   <div class="items">
-    <%= f.nested_fields_for :ingredients do |i| %>
+    <%= f.nested_fields_for :measurements do |m| %>
 
       <fieldset class="item">
-        <%= i.fields_for :measurements do |m| %>
-          <%= m.text_field :ingredient_size %>
-          <%= m.select :ingredient_unit, %w[unit tbsp tsp cup pint quart oz] %>
+        <%= m.text_field :ingredient_size %>
+        <%= m.select :ingredient_unit, %w[unit tbsp tsp cup pint quart oz] %>
+
+        <%= m.fields_for :ingredient do |i| %>
+          <%= i.text_field :name %>
         <% end %>
 
-        <%= i.text_field :name %>
         <a href="#" class="remove">Remove</a>
-
-        <%= i.hidden_field :id %>
-        <%= i.hidden_field :_destroy %>
+        <%= m.hidden_field :id %>
+        <%= m.hidden_field :_destroy %>
       </fieldset>
+
     <% end %>
   </div>
   <a href="#" class="add">Add</a>

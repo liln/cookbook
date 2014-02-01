@@ -4,8 +4,8 @@ Cookbook::Application.routes.draw do
       get 'ingredients'
     end
   end
-  resources :ingredients, except: [:show]
+  resources :ingredients
 
-  root :to => "recipes#index"
+  root :to => 'recipes#index'
 
 end

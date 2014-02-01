@@ -1,0 +1,16 @@
+<h1>Ingredient</h1>
+
+<h2><%= @ingredient.name %></h2>
+
+<h3>Properties:</h3>
+<p>
+<%= @ingredient.lactose ? 'Lactose' : '' %>
+<%= @ingredient.nut ? 'Nut' : '' %>
+<%= @ingredient.shellfish ? 'Shellfish' : '' %>
+<%= @ingredient.wheat ? 'Wheat' : '' %>
+<%= @ingredient.vegetarian ? 'Vegetarian' : '' %>
+<%= @ingredient.vegan ? 'Vegan' : '' %>
+</p>
+
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
+<%= link_to 'Back to Ingredients List', ingredients_path %>

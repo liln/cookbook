@@ -15,6 +15,9 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+#    @measurements = @recipe.measurements.build
+    @ingredients = @recipe.measurements.build.build_ingredient
+
   end
 
   # GET /recipes/1/edit
@@ -26,12 +29,13 @@ class RecipesController < ApplicationController
   def create
     binding.pry
     @recipe = Recipe.new(recipe_params)
-    @ingredients = @recipe.ingredients.build(params[:recipe][:ingredient_attributes])
+
+    #@recipe.ingredients.build(params[:recipe][:ingredient_attributes] )
+    #@ingredients = @recipe.ingredients.build(params[:recipe][:ingredient_attributes])
     #@measurements = @recipe.measurements.build(params[:recipe][:measurements])
 
     respond_to do |format|
       if @recipe.save
-        reci
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
         format.json { render action: 'show', status: :created, location: @recipe }
       else
@@ -74,8 +78,8 @@ class RecipesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
       params.require(:recipe).permit(:name, :type, :servings, :directions,
-        :ingredients => [:id, :name,
-          :measurements => [:id, :ingredient_size, :ingredient_unit]
+        :measurements_attributes => [:id, :ingredient_size, :ingredient_unit,
+          :ingredient_attributes => [:id, :name]
  #       :measurements => [:id, :ingredient_size, :ingredient_unit,
  #         :ingredients => [:id, :name]
           ])

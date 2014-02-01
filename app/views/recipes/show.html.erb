@@ -9,13 +9,14 @@
   <strong>Servings:</strong>
   <%= @recipe.servings %>
 </p>
-<% binding.pry %>
+
 <p>
   <strong>Ingredients:</strong><br>
-    <% @recipe.ingredients.each do |r| %>
-      <%= r.measurement.ingredient_size %>
-      <%= r.measurement.ingredient_unit %>
-      <%= r.name %>
+    <% @recipe.measurements.each do |m| %>
+      <%= m.ingredient_size %>
+      <%= m.ingredient_unit %>
+      <%= m.ingredient.name %>
+      <br>
     <% end %>
 </p>
 
