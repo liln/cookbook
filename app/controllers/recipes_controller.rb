@@ -15,8 +15,8 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
-#    @measurements = @recipe.measurements.build
-    @ingredients = @recipe.measurements.build.build_ingredient
+    @measurements = @recipe.measurements.build
+#    @ingredients = @recipe.measurements.build.build_ingredient
 
   end
 
@@ -27,13 +27,8 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    binding.pry
     @recipe = Recipe.new(recipe_params)
-
-    #@recipe.ingredients.build(params[:recipe][:ingredient_attributes] )
-    #@ingredients = @recipe.ingredients.build(params[:recipe][:ingredient_attributes])
-    #@measurements = @recipe.measurements.build(params[:recipe][:measurements])
-
+    binding.pry
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
@@ -79,9 +74,8 @@ class RecipesController < ApplicationController
     def recipe_params
       params.require(:recipe).permit(:name, :type, :servings, :directions,
         :measurements_attributes => [:id, :ingredient_size, :ingredient_unit,
-          :ingredient_attributes => [:id, :name]
- #       :measurements => [:id, :ingredient_size, :ingredient_unit,
- #         :ingredients => [:id, :name]
+            :ingredient_name
+ #         :ingredient_attributes => [:id, :name]
           ])
     end
 end

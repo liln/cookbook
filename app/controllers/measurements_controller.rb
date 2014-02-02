@@ -1,24 +1,10 @@
 class MeasurementsController < ApplicationController
+  before_action :pause
   before_action :set_measurement, only: [:show, :edit, :update, :destroy]
-
-  # GET /measurements
-  # GET /measurements.json
-  def index
-    @measurements = Measurement.all
-  end
-
-  # GET /measurements/1
-  # GET /measurements/1.json
-  def show
-  end
 
   # GET /measurements/new
   def new
     @measurement = Measurement.new
-  end
-
-  # GET /measurements/1/edit
-  def edit
   end
 
   # POST /measurements
@@ -62,6 +48,10 @@ class MeasurementsController < ApplicationController
   end
 
   private
+    def pause
+      binding.pry
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_measurement
       @measurement = Measurement.find(params[:id])

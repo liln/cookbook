@@ -28,9 +28,11 @@
         <%= m.text_field :ingredient_size %>
         <%= m.select :ingredient_unit, %w[unit tbsp tsp cup pint quart oz] %>
 
+        <%= m.text_field :ingredient_name %>
+        <!--
         <%= m.fields_for :ingredient do |i| %>
           <%= i.text_field :name %>
-        <% end %>
+        <% end %> -->
 
         <a href="#" class="remove">Remove</a>
         <%= m.hidden_field :id %>
