@@ -5,7 +5,7 @@ By [Lillian Ng](http://github.com/orangeninjamidget)
 This application uses Rails 4.
 
 ## Description
-This cookbook application lets you add and explore recipes. It is an example of a has_many :through relationship using nested forms. New recipes include fields to enter measurements and ingredients. Ingredients do not recplicate if they are already in the database.
+This cookbook application lets you add and explore recipes. It is an example of a has_many :through relationship using nested forms. New recipes include fields to enter measurements and ingredients. Ingredients do not replicate if they are already in the database.
 
 ## Models
 
@@ -25,6 +25,12 @@ class Ingredient < ActiveRecord::Base
   has_many :recipes, :through => :measurement
 end
 ```
+Recipe stores: name, servings, and directions
+
+Measurement stores: ingredient_unit and ingredient_size
+
+Ingredient stores: name and many booleans for tracking lactose, nut, shellfish, wheat, vegetarian, vegan
+
 
 ## Known Issues and Bugs
 
